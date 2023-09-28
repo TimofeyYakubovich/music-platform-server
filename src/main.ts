@@ -11,7 +11,11 @@ const start = async () => {
         const app = await NestFactory.create(AppModule)
         app.use(json({ limit: '50mb' }));
         app.use(urlencoded({ extended: true, limit: '50mb' }));
-        app.enableCors() // корс что бы отправлять запросы с браузера без проблем
+        app.enableCors({
+            origin: 'https://music-platform-server-omega.vercel.app', // Укажите домен, с которого разрешены запросы
+            methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Укажите разрешенные HTTP-методы
+            credentials: true, // Разрешить передачу куки и заголовков авторизации
+        }) // корс что бы отправлять запросы с браузера без проблем
         await app.listen(PORT, () => console.log(`server started on port ${PORT}`))
     } catch (e) {
         console.log(e)
