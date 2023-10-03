@@ -14,7 +14,7 @@ const start = async () => {
         app.enableCors({
             origin: 'https://music-platform-client.vercel.app', // Укажите домен, с которого разрешены запросы
             // origin: '*', // Укажите домен, с которого разрешены запросы
-            methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS', // Укажите разрешенные HTTP-методы
+            methods: 'GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS', // Укажите разрешенные HTTP-методы
             credentials: true, // Разрешить передачу куки и заголовков авторизации
         }) // корс что бы отправлять запросы с браузера без проблем
         await app.listen(PORT, () => console.log(`server started on port ${PORT}`))
